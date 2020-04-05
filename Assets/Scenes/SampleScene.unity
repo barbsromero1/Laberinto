@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2de6bc59216b92449c5fcd545d6601d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1782022913}
   offset: {x: 0, y: 0, z: 0}
 --- !u!1001 &1007946652
 PrefabInstance:
@@ -3856,7 +3856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0806a3553f09b45bd4ef30f17759a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upForce: 200
+  upForce: 180
   speed: 2.5
 --- !u!1 &1918654347
 GameObject:
@@ -3950,12 +3950,12 @@ PrefabInstance:
     - target: {fileID: 3185208840953784322, guid: dacad04d82688da4c8b82f0019053cbd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7
+      value: 0.637
       objectReference: {fileID: 0}
     - target: {fileID: 3185208840953784322, guid: dacad04d82688da4c8b82f0019053cbd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.236
+      value: 0.231
       objectReference: {fileID: 0}
     - target: {fileID: 3185208840953784322, guid: dacad04d82688da4c8b82f0019053cbd,
         type: 3}
