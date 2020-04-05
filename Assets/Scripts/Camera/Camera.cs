@@ -10,17 +10,19 @@ public class Camera : MonoBehaviour
 
     void Start()
     {
-        offset = transform.position - player.position;
+       // offset = transform.position - player.position;
+        offset = transform.position - player.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player)
-        {
-            Vector3 newPos = transform.position;
-            newPos.x = player.position.x + offset.x;
-            transform.position = newPos;
-        }
+        //if (player)
+        //{
+        //    Vector3 newPos = transform.position;
+        //    newPos.x = player.position.x + offset.x;
+        //    transform.position = newPos;
+        //}
+        transform.position = player.transform.position + offset;
     }
 }
