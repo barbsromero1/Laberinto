@@ -35,14 +35,14 @@ public class Peki : MonoBehaviour
                 anim.Play("Peki_Anima");
             }
 
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
                 transform.localScale = new Vector3(1f,1f,1f);
                 anim.Play("Peki_Anima");
             }
 
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 transform.Translate(Vector2.left * speed * Time.deltaTime);
                 transform.localScale = new Vector3(-1f,1f,1f);
