@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -12,16 +11,7 @@ public class Peki : MonoBehaviour
     public float upForce;
     public float speed = 0.5f;
     private bool isDead = false;
-<<<<<<< HEAD
-    public AudioSource sounds;
-    public AudioClip damage_sound;
-    public int maxHealth = 4;
-    public int curentHealth;
-    public HealthBar healthBar;
-=======
 
-    private LivesManager liveSystem;
->>>>>>> 48724d589bd6b27d304d108625d597858e2c6e87
 
     private Rigidbody2D rigi;
     Animator anim;
@@ -30,12 +20,6 @@ public class Peki : MonoBehaviour
     {
         rigi = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-<<<<<<< HEAD
-        curentHealth = maxHealth;
-        healthBar.setHealth(maxHealth);
-=======
-        liveSystem = FindObjectOfType<LivesManager>();
->>>>>>> 48724d589bd6b27d304d108625d597858e2c6e87
     }
 
     // Update is called once per frame
@@ -75,38 +59,9 @@ public class Peki : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-<<<<<<< HEAD
-            sounds.clip = damage_sound;
-            //StartCoroutine(DamagePeki());
-            sounds.Play();
-            if (curentHealth == 1)
-            {
-                curentHealth -= 1;
-                healthBar.setHealth(curentHealth);
-
-                isDead = true;
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                curentHealth -= 1;
-                healthBar.setHealth(curentHealth);
-            }
-=======
-            liveSystem.TakeLife();
             isDead = true;
->>>>>>> 48724d589bd6b27d304d108625d597858e2c6e87
         }
     }
-
-    //IEnumerator DamagePeki()
-    //{
-    //    sounds.Play();
-    //    isDead = true;
-    //    yield return new WaitForSeconds(3);
-    //    Destroy(this.gameObject);
-    //}
-
     //IEnumerator KillTheMonnkey()
     //{
     //    //para que si tu personaje no se ve en pantalla es muerte absoluta 
