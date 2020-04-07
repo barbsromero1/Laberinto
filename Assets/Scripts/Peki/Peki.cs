@@ -12,6 +12,8 @@ public class Peki : MonoBehaviour
     public float speed = 0.5f;
     private bool isDead = false;
 
+    private LivesManager liveSystem;
+
     private Rigidbody2D rigi;
     Animator anim;
 
@@ -19,6 +21,7 @@ public class Peki : MonoBehaviour
     {
         rigi = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        liveSystem = FindObjectOfType<LivesManager>();
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class Peki : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            liveSystem.TakeLife();
             isDead = true;
         }
     }
