@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 201853907}
   - component: {fileID: 201853911}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: PauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f908af36118ee39438df53a6a11aad19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenueUI: {fileID: 0}
+  pauseMenueUI: {fileID: 2123778859}
 --- !u!1001 &215149185
 PrefabInstance:
   m_ObjectHideFlags: 0
