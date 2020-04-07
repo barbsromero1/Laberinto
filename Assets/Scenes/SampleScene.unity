@@ -17644,7 +17644,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 9f8949ea3ae4b6547beed78a329344c5,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7c21d1683d510084d805556e851fa5c6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ced79181f31fb6d45ab23b283b1dc8d1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -19296,7 +19296,7 @@ MonoBehaviour:
   upForce: 180
   speed: 2.5
   sounds: {fileID: 1934734425}
-  damage_sound: {fileID: 8300000, guid: 6117a86e5b00f2c4a9a177947a0da35d, type: 3}
+  damage_sound: {fileID: 8300000, guid: 78cb19dee5e680949aad5b4f7de9eee1, type: 3}
   maxHealth: 4
   curentHealth: 4
   healthBar: {fileID: 2096146814}
@@ -19978,7 +19978,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243804571434937930, guid: 9f8949ea3ae4b6547beed78a329344c5,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6117a86e5b00f2c4a9a177947a0da35d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 78cb19dee5e680949aad5b4f7de9eee1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
