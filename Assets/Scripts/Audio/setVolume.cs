@@ -7,7 +7,6 @@ using UnityEngine.Audio;
 public class setVolume : MonoBehaviour
 {
     public AudioMixer mixer;
-
     public void SetLevel (float sliderValue)
     {
         //mixer.SetFloat("MenuVolume", Mathf.Log10(sliderValue) * 20);
@@ -22,6 +21,6 @@ public class setVolume : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

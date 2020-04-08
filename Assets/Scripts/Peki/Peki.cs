@@ -13,16 +13,23 @@ public class Peki : MonoBehaviour
     public float speed = 0.5f;
     private bool isDead = false;
     public AudioSource sounds;
+    public AudioSource playmusic;
     public AudioClip damage_sound;
+    public AudioClip playing_music;
+    public AudioClip dead_music;
     public int maxHealth = 4;
     public int curentHealth;
     public HealthBar healthBar;
 
+    [SerializeField]
+    private GameObject gameoverUI;
+
     private Rigidbody2D rigi;
     Animator anim;
-
     void Start()
     {
+        playmusic.clip = playing_music;
+        playmusic.Play();
         rigi = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         curentHealth = maxHealth;
@@ -75,6 +82,11 @@ public class Peki : MonoBehaviour
             {
                 isDead = true;
                 Destroy(this.gameObject);
+                gameoverUI.SetActive(true);
+                //music.Stop();
+                playmusic.Stop();
+                playmusic.clip = dead_music;
+                playmusic.Play();
             }
         }
     }
