@@ -41,27 +41,29 @@ public class Peki : MonoBehaviour
     {
         if (isDead == false && !(PauseMenu.GamePause))
         {
+            anim.Play("IdlePeki"); 
             //transform.Translate(Vector2.right * speed * Time.deltaTime);
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
                 rigi.velocity = Vector2.zero;
                 rigi.AddForce(new Vector2(0, upForce));
-                anim.Play("Peki_Anima");
+                //anim.Play("Peki_Anima");
             }
 
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
                 transform.localScale = new Vector3(1f,1f,1f);
-                anim.Play("Peki_Anima");
+                //anim.Play("Peki_Anima");
             }
 
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 transform.Translate(Vector2.left * speed * Time.deltaTime);
                 transform.localScale = new Vector3(-1f,1f,1f);
-                anim.Play("Peki_Anima");
+                //anim.Play("Peki_Anima");
             }
+            anim.Play("IdlePeki");
         }
 
     }
@@ -81,7 +83,7 @@ public class Peki : MonoBehaviour
             Destroy(collision.gameObject);
             //ResetDamage();
         }
-    }
+    } 
 
     void TakeDamage (int damage)
     {
