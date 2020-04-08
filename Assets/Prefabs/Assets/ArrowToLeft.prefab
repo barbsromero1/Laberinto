@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1779174967191728613}
   - component: {fileID: 1779174967191728614}
   m_Layer: 0
-  m_Name: Flecha
+  m_Name: ArrowToLeft
   m_TagString: ArrowE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0b4cd0e18a1724f8c3dc4b42a61e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -2
+  speed: -5
