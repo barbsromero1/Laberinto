@@ -93,7 +93,7 @@ public class Peki : MonoBehaviour
         {
             sounds.clip = damage_sound;
             sounds.Play();
-            curentHealth -= 1;
+            curentHealth -= 3;
             healthBar.setHealth(curentHealth);
             if (curentHealth == 0)
             {
