@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
 
     public static bool GamePause = false;
+    //Peki moveScript;
     public GameObject pauseMenueUI;
     // Update is called once per frame
     void Update()

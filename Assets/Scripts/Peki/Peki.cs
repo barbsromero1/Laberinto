@@ -32,7 +32,7 @@ public class Peki : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDead == false)
+        if (isDead == false && !(PauseMenu.GamePause))
         {
             //transform.Translate(Vector2.right * speed * Time.deltaTime);
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
