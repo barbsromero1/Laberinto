@@ -89,6 +89,24 @@ public class Peki : MonoBehaviour
                 playmusic.Play();
             }
         }
+        if (collision.gameObject.CompareTag("ArrowE"))
+        {
+            sounds.clip = damage_sound;
+            sounds.Play();
+            curentHealth -= 1;
+            healthBar.setHealth(curentHealth);
+            if (curentHealth == 0)
+            {
+                isDead = true;
+                Destroy(this.gameObject);
+                gameoverUI.SetActive(true);
+                Destroy(collision.gameObject);
+                //music.Stop();
+                playmusic.Stop();
+                playmusic.clip = dead_music;
+                playmusic.Play();
+            }
+        }
     }
 
     //IEnumerator DamagePeki()
