@@ -6,6 +6,8 @@ public class Arrows : MonoBehaviour
 {
     public float speed = 2f;
     bool isSeen;
+    public enum direction { up, down, left, right};
+    public direction dir;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +19,24 @@ public class Arrows : MonoBehaviour
     {
         if (isSeen)
         {
-            transform.Translate(transform.right * speed * Time.deltaTime);
+            switch (dir)
+            {
+                case direction.up:
+                    transform.eulerAngles = Vector3.forward * 90f;
+                    break;
+                case direction.down:
+                    transform.eulerAngles = Vector3.forward * 270f;
+                    break;
+                case direction.right:
+                    transform.eulerAngles = Vector3.zero;
+                    break;
+                case direction.left:
+                    transform.eulerAngles = Vector3.forward * 180f;
+                    break;
+            }
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
-        
+
     }
     private void OnBecameVisible()
     {
@@ -29,6 +46,6 @@ public class Arrows : MonoBehaviour
     private void OnBecameInvisible()
     {
         isSeen = false;
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 }
