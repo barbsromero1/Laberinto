@@ -24,7 +24,6 @@ public class Arrows : MonoBehaviour
     private void OnBecameVisible()
     {
         isSeen = true;
-
     }
 
     private void OnBecameInvisible()
