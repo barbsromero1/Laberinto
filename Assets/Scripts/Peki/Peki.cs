@@ -86,6 +86,10 @@ public class Peki : MonoBehaviour
             Destroy(collision.gameObject);
             //ResetDamage();
         }
+        if (collision.gameObject.CompareTag("Puerta"))
+        {
+            SceneManager.LoadScene("Final");
+        }
     } 
 
     void TakeDamage (int damage)
