@@ -73,48 +73,38 @@ public class Peki : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            sounds.clip = damage_sound;
-            //StartCoroutine(DamagePeki());
-            sounds.Play();
-            curentHealth -= 1;
-            healthBar.setHealth(curentHealth);
-            if (curentHealth == 0)
-            {
-                isDead = true;
-                Destroy(this.gameObject);
-                gameoverUI.SetActive(true);
-                //music.Stop();
-                playmusic.Stop();
-                playmusic.clip = dead_music;
-                playmusic.Play();
-            }
+            TakeDamage(1);
         }
         if (collision.gameObject.CompareTag("ArrowE"))
         {
-            sounds.clip = damage_sound;
-            sounds.Play();
-            curentHealth -= 3;
-            healthBar.setHealth(curentHealth);
-            if (curentHealth == 0)
-            {
-                isDead = true;
-                Destroy(this.gameObject);
-                gameoverUI.SetActive(true);
-                Destroy(collision.gameObject);
-                //music.Stop();
-                playmusic.Stop();
-                playmusic.clip = dead_music;
-                playmusic.Play();
-            }
+            TakeDamage(2);
+            Destroy(collision.gameObject);
+            //ResetDamage();
         }
     }
 
-    //IEnumerator DamagePeki()
+    void TakeDamage (int damage)
+    {
+        sounds.clip = damage_sound;
+        sounds.Play();
+        curentHealth -= damage;
+        healthBar.setHealth(curentHealth);
+        if (curentHealth == 0)
+        {
+            isDead = true;
+            Destroy(this.gameObject);
+            gameoverUI.SetActive(true);
+            //music.Stop();
+            playmusic.Stop();
+            playmusic.clip = dead_music;
+            playmusic.Play();
+        }
+    }
+
+    //IEnumerator ResetDamage()
     //{
-    //    sounds.Play();
-    //    isDead = true;
-    //    yield return new WaitForSeconds(3);
-    //    Destroy(this.gameObject);
+    //    hasCollide = false;
+    //    yield return new WaitForSeconds(2);
     //}
 
     //IEnumerator KillTheMonnkey()
