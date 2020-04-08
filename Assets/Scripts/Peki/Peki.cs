@@ -25,7 +25,7 @@ public class Peki : MonoBehaviour
     private GameObject gameoverUI;
 
     private Rigidbody2D rigi;
-    Animator anim;
+    public Animator anim;
     void Start()
     {
         playmusic.clip = playing_music;
@@ -41,13 +41,14 @@ public class Peki : MonoBehaviour
     {
         if (isDead == false && !(PauseMenu.GamePause))
         {
-            anim.Play("IdlePeki"); 
+            
             //transform.Translate(Vector2.right * speed * Time.deltaTime);
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
                 rigi.velocity = Vector2.zero;
                 rigi.AddForce(new Vector2(0, upForce));
                 //anim.Play("Peki_Anima");
+                anim.SetFloat("Speed", Mathf.Abs(speed));
             }
 
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
@@ -55,6 +56,7 @@ public class Peki : MonoBehaviour
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
                 transform.localScale = new Vector3(1f,1f,1f);
                 //anim.Play("Peki_Anima");
+                anim.SetFloat("Speed", Mathf.Abs(speed));
             }
 
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -62,8 +64,9 @@ public class Peki : MonoBehaviour
                 transform.Translate(Vector2.left * speed * Time.deltaTime);
                 transform.localScale = new Vector3(-1f,1f,1f);
                 //anim.Play("Peki_Anima");
+                anim.SetFloat("Speed", Mathf.Abs(speed));
             }
-            anim.Play("IdlePeki");
+            
         }
 
     }
