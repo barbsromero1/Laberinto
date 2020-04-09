@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef73136edc2ecc540904410c050d4ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 0}
+  arrow: {fileID: 7051039474610224841, guid: 24a5c8b1f042ad846afedb93c7629d0f, type: 3}
   arrowDirec: 0
   timeSinceLastArrow: 2

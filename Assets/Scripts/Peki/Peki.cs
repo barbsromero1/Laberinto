@@ -12,6 +12,7 @@ public class Peki : MonoBehaviour
     public float upForce;
     public float speed = 0.5f;
     private bool isDead = false;
+    public bool isIdle = false;
     public AudioSource sounds;
     public AudioSource playmusic;
     public AudioClip damage_sound;
@@ -20,6 +21,8 @@ public class Peki : MonoBehaviour
     public int maxHealth = 4;
     public int curentHealth;
     public HealthBar healthBar;
+    const float timeBetweenDamage = 0.2f;
+    public float timeSinceLastDamage = 0.2f;
 
     [SerializeField]
     private GameObject gameoverUI;
@@ -47,42 +50,42 @@ public class Peki : MonoBehaviour
             {
                 rigi.velocity = Vector2.zero;
                 rigi.AddForce(new Vector2(0, upForce));
-                //anim.Play("Peki_Anima");
-                anim.SetFloat("Speed", Mathf.Abs(speed));
+                isIdle = false;
+                anim.SetBool("isIdle", false);
             }
-
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            if (!isIdle)
             {
-                transform.Translate(Vector2.right * speed * Time.deltaTime);
-                transform.localScale = new Vector3(1f,1f,1f);
-                //anim.Play("Peki_Anima");
-                anim.SetFloat("Speed", Mathf.Abs(speed));
-            }
+                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                {
+                    transform.Translate(Vector2.right * speed * Time.deltaTime);
+                    transform.localScale = new Vector3(1f, 1f, 1f);
+                }
 
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(Vector2.left * speed * Time.deltaTime);
-                transform.localScale = new Vector3(-1f,1f,1f);
-                //anim.Play("Peki_Anima");
-                anim.SetFloat("Speed", Mathf.Abs(speed));
+                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                {
+                    transform.Translate(Vector2.left * speed * Time.deltaTime);
+                    transform.localScale = new Vector3(-1f, 1f, 1f);
+                }
             }
             
         }
+        timeSinceLastDamage -= Time.deltaTime;
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            isDead = false;
+            isIdle = true;
+            anim.SetBool("isIdle", true);
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(1);
+            TakeDamage(2);
         }
         if (collision.gameObject.CompareTag("ArrowE"))
         {
-            TakeDamage(2);
+            TakeDamage(1);
             Destroy(collision.gameObject);
             //ResetDamage();
         }
@@ -94,27 +97,31 @@ public class Peki : MonoBehaviour
 
     void TakeDamage (int damage)
     {
-        sounds.clip = damage_sound;
-        sounds.Play();
-        curentHealth -= damage;
-        healthBar.setHealth(curentHealth);
-        if (curentHealth == 0)
+        if (timeSinceLastDamage < 0)
         {
-            isDead = true;
-            Destroy(this.gameObject);
-            gameoverUI.SetActive(true);
-            //music.Stop();
-            playmusic.Stop();
-            playmusic.clip = dead_music;
-            playmusic.Play();
+            timeSinceLastDamage = timeBetweenDamage;
+            sounds.clip = damage_sound;
+            sounds.Play();
+            curentHealth -= damage;
+            healthBar.setHealth(curentHealth);
+            if (curentHealth <= 0)
+            {
+                isDead = true;
+                Destroy(this.gameObject);
+                gameoverUI.SetActive(true);
+                //music.Stop();
+                playmusic.Stop();
+                playmusic.clip = dead_music;
+                playmusic.Play();
+            }
         }
+ 
     }
 
-    //IEnumerator ResetDamage()
-    //{
-    //    hasCollide = false;
-    //    yield return new WaitForSeconds(2);
-    //}
+    IEnumerator ConfirmIdle()
+    {
+        yield return new WaitForSeconds(1);
+    }
 
     //IEnumerator KillTheMonnkey()
     //{
