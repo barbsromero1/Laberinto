@@ -9,6 +9,7 @@ TagManager:
   - ArrowE
   - Puerta
   - Coin
+  - Wall
   layers:
   - Default
   - TransparentFX
