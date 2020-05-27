@@ -23,6 +23,8 @@ public class Peki : MonoBehaviour
     public HealthBar healthBar;
     const float timeBetweenDamage = 0.2f;
     public float timeSinceLastDamage = 0.2f;
+    //para contar las vidas 
+    //public int CoinsCont = 0; 
 
     [SerializeField]
     private GameObject gameoverUI;
@@ -91,15 +93,19 @@ public class Peki : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Coin"))
         {
-            AddLive(1);
+            ScoreSystem.scoreValue += 1;
             Destroy(collision.gameObject);
-            //ResetDamage();
+
         }
         if (collision.gameObject.CompareTag("Puerta"))
         {
             SceneManager.LoadScene("Final");
         }
-        
+        if (ScoreSystem.scoreValue == 5)
+        {
+            AddLive(1);
+            ScoreSystem.scoreValue = 0; 
+        }
     } 
 
     void TakeDamage (int damage)
