@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - ArrowE
   - Puerta
+  - Coin
   layers:
   - Default
   - TransparentFX

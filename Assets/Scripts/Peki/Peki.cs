@@ -89,10 +89,17 @@ public class Peki : MonoBehaviour
             Destroy(collision.gameObject);
             //ResetDamage();
         }
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            AddLive(1);
+            Destroy(collision.gameObject);
+            //ResetDamage();
+        }
         if (collision.gameObject.CompareTag("Puerta"))
         {
             SceneManager.LoadScene("Final");
         }
+        
     } 
 
     void TakeDamage (int damage)
@@ -116,6 +123,29 @@ public class Peki : MonoBehaviour
             }
         }
  
+    }
+
+    void AddLive(int damage)
+    {
+        if (timeSinceLastDamage < 0)
+        {
+            timeSinceLastDamage = timeBetweenDamage;
+            sounds.clip = damage_sound;
+            sounds.Play();
+            curentHealth += damage;
+            healthBar.setHealth(curentHealth);
+            if (curentHealth <= 0)
+            {
+                isDead = true;
+                Destroy(this.gameObject);
+                gameoverUI.SetActive(true);
+                //music.Stop();
+                playmusic.Stop();
+                playmusic.clip = dead_music;
+                playmusic.Play();
+            }
+        }
+
     }
 
     IEnumerator ConfirmIdle()
