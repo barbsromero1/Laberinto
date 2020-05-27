@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 
@@ -24,7 +27,8 @@ public class Peki : MonoBehaviour
     const float timeBetweenDamage = 0.2f;
     public float timeSinceLastDamage = 0.2f;
     //para contar las vidas 
-    //public int CoinsCont = 0; 
+    public int CoinsCont = 0;
+    public TextMeshProUGUI scoreText;
 
     [SerializeField]
     private GameObject gameoverUI;
@@ -39,6 +43,7 @@ public class Peki : MonoBehaviour
         anim = GetComponent<Animator>();
         curentHealth = maxHealth;
         healthBar.setHealth(maxHealth);
+        HeartStatus.lifeStatus = 4;
     }
 
     // Update is called once per frame
@@ -93,7 +98,16 @@ public class Peki : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Coin"))
         {
-            ScoreSystem.scoreValue += 1;
+            CoinsCont += 1;
+            //ScoreSystem.scoreValue += 1;
+            scoreText.text = "X" + CoinsCont;
+            //scoreText.text = "X" + ScoreSystem.scoreValue;
+            if (CoinsCont == 5)
+            {
+                AddLive();
+                CoinsCont = 0;
+                scoreText.text = "X0";
+            }
             Destroy(collision.gameObject);
 
         }
@@ -101,12 +115,12 @@ public class Peki : MonoBehaviour
         {
             SceneManager.LoadScene("Final");
         }
-        if (ScoreSystem.scoreValue == 5)
-        {
-            AddLive(1);
-            ScoreSystem.scoreValue = 0; 
-        }
-    } 
+        //    if (ScoreSystem.scoreValue == 5)
+        //    {
+        //        AddLive(1);
+        //        ScoreSystem.scoreValue = 0; 
+        //    }
+    }
 
     void TakeDamage (int damage)
     {
@@ -117,6 +131,7 @@ public class Peki : MonoBehaviour
             sounds.Play();
             curentHealth -= damage;
             healthBar.setHealth(curentHealth);
+            HeartStatus.lifeStatus -= damage;
             if (curentHealth <= 0)
             {
                 isDead = true;
@@ -131,27 +146,11 @@ public class Peki : MonoBehaviour
  
     }
 
-    void AddLive(int damage)
+    void AddLive()
     {
-        if (timeSinceLastDamage < 0)
-        {
-            timeSinceLastDamage = timeBetweenDamage;
-            sounds.clip = damage_sound;
-            sounds.Play();
-            curentHealth += damage;
-            healthBar.setHealth(curentHealth);
-            if (curentHealth <= 0)
-            {
-                isDead = true;
-                Destroy(this.gameObject);
-                gameoverUI.SetActive(true);
-                //music.Stop();
-                playmusic.Stop();
-                playmusic.clip = dead_music;
-                playmusic.Play();
-            }
-        }
-
+        curentHealth = 4;
+        HeartStatus.lifeStatus = 4;
+        healthBar.setHealth(curentHealth);
     }
 
     IEnumerator ConfirmIdle()
