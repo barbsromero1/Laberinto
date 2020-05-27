@@ -20,7 +20,7 @@ public class GameOver : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Game Over Quit");
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
     
     public void Retry()

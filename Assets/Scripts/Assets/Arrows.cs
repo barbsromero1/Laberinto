@@ -11,10 +11,10 @@ public class Arrows : MonoBehaviour
     void Update()
     {
         Debug.Log("Funciona");
-        if(isSeen)
-        {
+        //if(isSeen)
+        //{
             transform.Translate(Vector2.right * speed * Time.deltaTime);
-        }
+        //}
     }
 
     public void ChangeDir(direction newDir)
@@ -42,6 +42,10 @@ public class Arrows : MonoBehaviour
             Destroy(gameObject);
         }
         if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(gameObject);
         }
